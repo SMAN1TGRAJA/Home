@@ -201,7 +201,7 @@ footer .social-media a img:hover {
     /* Hero Section dengan Overlay */
 .home {
     position: relative;
-    background: url('Img/images (6).jpeg') no-repeat center center/cover;
+    background: url('images (6).jpeg') no-repeat center center/cover;
     color: white;
     text-align: center;
     padding: 100px 20px;
@@ -227,14 +227,14 @@ footer .social-media a img:hover {
 }
 @media (max-width: 10000px) {
     .home {
-        background: url('Img/images (6).jpeg') no-repeat center center/cover;
+        background: url('images (6).jpeg') no-repeat center center/cover;
         padding: 80px 15px;
     }
 }
 
 @media (max-width: 480px) {
     .home {
-        background: url('Img/images (6).jpeg') no-repeat center center/cover;
+        background: url('images (6).jpeg') no-repeat center center/cover;
         padding: 60px 10px;
     }
 .social-media img {
