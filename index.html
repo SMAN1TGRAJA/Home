@@ -14,7 +14,7 @@
             <img src="317-SMAN_1_TANJUNG_RAJA.png" alt="Logo Sekolah">
             <h1>SMA Negeri 1 Tanjung Raja</h1>
         </div>
-        <nav class="navbar">
+<nav class="navbar">
     <div class="menu-toggle" id="menu-toggle">
       <div class="bar"></div>
       <div class="bar"></div>
@@ -41,15 +41,81 @@
           <span class="toggle-submenu">+</span>
         </div>
         <ul class="submenu">
-          <li><a href="ekstrakulikuler.html">ekstrakurikuler</a></li>
+          <li><a href="ekstrakurikuler.html">Ekstrakurikuler</a></li>
           <li><a href="ppdb.html">PPDB 2024</a></li>
           <li><a href="e-learning.html">E-learning</a></li>
-          </div>
-                <li><a href="berita.html">Berita</a></li>
+          </li>
+      </ul>
+          <ul>
+      <li><a href="berita.html">Berita</a></li>
+      </ul>
+                <ul>
       <li><a href="about.html">Tentang Kami</a></li>
-        </ul>
-  </div>
-</header>
+      </ul>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="home">
+        <h2>Selamat Datang di SMA Negeri 1 Tanjung Raja</h2>
+        <p>Bermutu Bidang Akademik, Kreatif dalam Karya, dan Berakhlak Mulia</p>
+    </section>
+    
+        <section id="Sambutan" class="hero">
+        <div class="card">
+            <p>"Pendidikan adalah senjata paling mematikan di dunia, karena dengan pendidikan anda dapat mengubah dunia"</p>
+<p>~ Nelson Mandela</p>
+            </section>
+
+    <section id="Sambutan" class="hero">
+        <div class="card">
+          <img src="Foto Ibu Sutinawati.png">
+            <h2>Sambutan Kepala SMAN 1 Tanjung Raja</h2>
+<div class="signature-section">
+    <div class="signature-line"></div>
+            <p align="justify">Bismillahirrohmanirrohim</p><p align="justify">Assalamualaikum Wr.Wb</p><p align="justify">Salam sehat serta sejahtera bagi kita semua</p>
+<p align="justify">Saya ucapkan Selamat Datang di Official Website resmi SMAN 1 Tanjung Raja.
+Puji dan syukur kehadirat Allah SWT. Karena atas rahmat, rezeki, serta hidayahnya sehingga kami dapat menyapa semua yang berkenan untuk berkunjung di website OSIS SMAN 1 Tanjung Raja. Di era global dan pesatnya Teknologi Informasi dan Komunikasi ini, tidak dipungkiri bahwa keberadaan sebuah website untuk suatu organisasi, termasuk SMA Negeri 1 Tanjung Raja, sangatlah penting. Wahana website dapat digunakan sebagai media penyebarluasan informasi-informasi dan pembelajaran (E-learning) dari sekolah, yang memang harus diketahui oleh stake holder secara luas. Disamping itu, website juga dapat menjadi sarana promosi sekolah yang cukup efektif. Berbagai kegiatan positif sekolah dapat diunggah, disertai gambar-gambar yang relevan, sehingga masyarakat dapat mengetahui prestasi-prestasi yang telah berhasil diraih oleh siswa-siswi SMA Negeri 1 Tanjung Raja. Website ini juga merupakan salah satu Visi dan Misi OSIS SMAN 1 Tanjung Raja, jadi saya harapkan agar website ini dapat memberikan manfaat dan kemudahan untuk lebih baik kedepannya terutama di era teknologi sekarang.</p>
+<p align="justify">SMANTRA..</p>
+<p align="justify">Tobo Pacak, Pacak Tobo, Pacak Gale!!</p>
+<div class="signature-section">
+    <div class="signature-line"></div>
+<p align="justify">Kepala SMAN 1 Tanjung Raja</p>
+<div class="signature-section">
+    <div class="signature-line"></div>
+<p align="justify">Dra. Sutinawati, M.Si</p>
+<p align="justify">NIP. 196606061991032008</p>
+        </div>
+    </section>
+    
+    <section id="berita" class="news-section">
+    <h2>Berita Terkini</h2>
+    <div class="news-slider" id="newsSlider">
+        <!-- Kartu Berita -->
+                <div class="news-card">
+            <img src="IMG-20241114-WA0060.jpg" alt="berita 2">
+            <h3>Kunjungan Kepala Dinas Provinsi Sumatera Selatan dalam rangka acara Workshop Public Speaking SMAN 1 Tanjung Raja</h3>
+            <p>14 November 2024</p>
+            <a href="berita2.html" class="read-more">Baca Selengkapnya</a>
+        </div>
+        <div class="news-card">
+            <img src="IMG-20241028-WA0158.jpg" alt="Berita 3">
+            <h3>Meriah!, SMAN 1 Tanjung Raja adakan event memperingati Hari Sumpah Pemuda</h3>
+            <p>28 Oktober 2024</p>
+            <a href="berita3.html" class="read-more">Baca Selengkapnya</a>
+            </div>
+        <div class="news-card">
+            <img src="IMG-20241108-WA0033.jpg" alt="Berita 1">
+            <h3>Silahturahmi Akbar SMAN 1 Tanjung Raja</h3>
+            <p>02 November 2024</p>
+            <a href="berita1.html" class="read-more">Baca Selengkapnya</a>
+        </div>
+        </div>
+    </div>
+    <div class="news-footer">
+        <a href="berita.html" class="see-all">Lihat Semua</a>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>
@@ -61,27 +127,6 @@
         </div>
     </footer>
     <script>
-      // Ambil elemen menu toggle dan menu
-const menuToggle = document.getElementById('menu-toggle');
-const menu = document.getElementById('menu');
-
-// Fungsi untuk membuka/tutup menu utama
-menuToggle.addEventListener('click', () => {
-  menu.classList.toggle('active');
-  menuToggle.classList.toggle('active');
-});
-
-// Ambil semua tombol untuk submenu
-const submenuToggles = document.querySelectorAll('.toggle-submenu');
-
-// Fungsi untuk membuka/tutup submenu
-submenuToggles.forEach(toggle => {
-  toggle.addEventListener('click', (e) => {
-    const parentLi = e.target.closest('.has-submenu');
-    const submenu = parentLi.querySelector('.submenu');
-    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-  });
-});
 // Slider Otomatis
 const slider = document.getElementById('newsSlider');
 let scrollAmount = 0;
@@ -102,6 +147,8 @@ function slideNews() {
 
 // Panggil slideNews setiap 3 detik
 setInterval(slideNews, 4000);
+
     </script>
+    <script src="script.js"></script></script>
 </body>
 </html>
