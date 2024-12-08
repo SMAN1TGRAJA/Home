@@ -617,4 +617,15 @@ footer .social-media a img:hover {
   max-width: 50px;
   max-height: 50px;
 }
+.action-button {
+    background-color: white;
+    color: #0078ff;
+    border: none;
+    padding: 10px 5px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: times new roman
 }
