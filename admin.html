@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>SMAN 1 Tanjung Raja</h2>
+        <ul class="menu">
+            <li><a href="#" id="studentsMenu"><i class="fa fa-users"></i> Daftar Siswa</a></li>
+            <li><a href="#" id="inputNilaiMenu"><i class="fa fa-pencil"></i> Input Nilai</a></li>
+            <li><a href="#" id="absenMenu"><i class="fa fa-camera"></i> Absen QR</a></li>
+            <li><a href="#" id="logoutMenu"><i class="fa fa-sign-out"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <!-- Daftar Siswa -->
+        <div id="studentsSection">
+            <h1>Daftar Siswa</h1>
+            <table id="studentsTable"></table>
+        </div>
+
+        <!-- Input Nilai -->
+        <div id="inputNilaiSection" style="display: none;">
+            <h1>Input Nilai Siswa</h1>
+<iframe src="dashboard.html" width="100%" height="1000px" style="border: none;"></iframe>
+        </div>
+
+        <!-- Absen QR -->
+        <div id="absenSection" style="display: none;">
+            <h1>Absen QR</h1>
+            <button onclick="startQRCodeScanner()">Scan QR</button>
+            <video id="scanner" width="300" height="300"></video>
+        </div>
+    </div>
+<div class="notification-card" id="notificationCard">
+    <div class="notification-content">
+      <h4>Perhatikan!</h4>
+      <p>Untuk pengalaman yang lebih baik, buka situs ini di versi desktop.</p>
+      <button id="dismissNotification" class="btn-dismiss">Tutup</button>
+    </div>
+  </div>
+    <script>
+        // Mendapatkan file Excel yang sudah ada (misalnya menggunakan file server atau database)
+        const fileURL = 'student.xlsx'; // Ganti dengan URL file yang ada
+
+        // Membaca file Excel yang sudah ada
+        const loadExcelData = () => {
+            fetch(fileURL)
+                .then(response => response.arrayBuffer())
+                .then(data => {
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const jsonData = XLSX.utils.sheet_to_json(sheet);
+                    displayStudents(jsonData);
+                    displayGenderStats(jsonData);
+                    displayGradeChart(jsonData);
+                });
+        };
+
+        // Menampilkan daftar siswa
+        const displayStudents = (students) => {
+            const table = document.getElementById('studentsTable');
+            table.innerHTML = "<thead><tr><th>Nama</th><th>Kelas</th><th>Jenis Kelamin</th></tr></thead><tbody>";
+            students.forEach(student => {
+                table.innerHTML += `<tr><td>${student.Nama}</td><td>${student.Kelas}</td><td>${student.JenisKelamin}</td></tr>`;
+            });
+            table.innerHTML += "</tbody>";
+        };
+
+        // Menampilkan statistik jenis kelamin
+        const displayGenderStats = (students) => {
+            const genderStats = students.reduce((stats, student) => {
+                const gender = student.JenisKelamin.toLowerCase();
+                if (stats[gender]) {
+                    stats[gender]++;
+                } else {
+                    stats[gender] = 1;
+                }
+                return stats;
+            }, {});
+
+            document.getElementById('genderStats').innerHTML = `
+                Pria: ${genderStats.pria || 0}, Wanita: ${genderStats.wanita || 0}
+            `;
+        };
+
+        // Menampilkan grafik nilai siswa
+        const displayGradeChart = (students) => {
+            const grades = students.map(student => student.Nilai);
+            const names = students.map(student => student.Nama);
+
+            const ctx = document.getElementById('gradeChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: names,
+                    datasets: [{
+                        label: 'Nilai Siswa',
+                        data: grades,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                }
+            });
+        };
+
+        // Menu Navigasi
+        document.getElementById('studentsMenu').addEventListener('click', () => {
+            document.getElementById('studentsSection').style.display = 'block';
+            document.getElementById('inputNilaiSection').style.display = 'none';
+            document.getElementById('absenSection').style.display = 'none';
+        });
+
+        document.getElementById('inputNilaiMenu').addEventListener('click', () => {
+            document.getElementById('studentsSection').style.display = 'none';
+            document.getElementById('inputNilaiSection').style.display = 'block';
+            document.getElementById('absenSection').style.display = 'none';
+        });
+
+        document.getElementById('absenMenu').addEventListener('click', () => {
+            document.getElementById('studentsSection').style.display = 'none';
+            document.getElementById('inputNilaiSection').style.display = 'none';
+            document.getElementById('absenSection').style.display = 'block';
+        });
+
+        document.getElementById('logoutMenu').addEventListener('click', () => {
+            localStorage.removeItem('username');
+            window.location.href = 'login.html';
+        });
+
+        // Absen QR Scanner
+        const startQRCodeScanner = () => {
+            // Implementasi pemindaian QR Code menggunakan kamera (gunakan library seperti jsQR)
+            console.log('Scan QR Code...');
+        };
+// Menampilkan card notifikasi
+function showNotificationCard() {
+  const notificationCard = document.getElementById('notificationCard');
+  notificationCard.style.display = 'block'; // Tampilkan notifikasi
+}
+
+// Tombol untuk menutup notifikasi
+const dismissButton = document.getElementById('dismissNotification');
+dismissButton.addEventListener('click', () => {
+  const notificationCard = document.getElementById('notificationCard');
+  notificationCard.style.display = 'none'; // Sembunyikan notifikasi
+});
+
+// Menampilkan notifikasi setelah halaman dimuat
+document.addEventListener('DOMContentLoaded', () => {
+  // Cek apakah pengguna menggunakan perangkat mobile (untuk menentukan kapan menampilkan notifikasi)
+  if (window.innerWidth <= 768) { // Bisa menyesuaikan batas ukuran layar untuk perangkat mobile
+    showNotificationCard(); // Tampilkan notifikasi
+  }
+});
+
+        // Memuat data siswa saat pertama kali
+        loadExcelData();
+
+    </script>
+</body>
+</html>

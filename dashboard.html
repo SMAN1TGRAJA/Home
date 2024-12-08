@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Nilai Siswa</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Nilai Siswa</h1>
+    <button id="loadData">Muat Data Siswa</button>
+    <button id="resetData">Reset Nilai</button>
+    <form id="studentForm" style="display: none;">
+      <div class="form-group">
+        <label for="class">Kelas:</label>
+        <select id="class" required>
+          <option value="">Pilih Kelas</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="name">Nama Siswa:</label>
+        <select id="name" required disabled>
+          <option value="">Pilih Nama</option>
+        </select>
+      </div>
+      <div id="subjectContainer">
+        <div class="subject-group">
+          <label for="subject">Mata Pelajaran:</label>
+          <select class="subject" required>
+            <option value="">Pilih Mata Pelajaran</option>
+            <option value="Matematika">Matematika</option>
+            <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+            <option value="IPA">IPA</option>
+          </select>
+        </div>
+        <div id="gradeContainer">
+          <div class="form-group grade-group">
+            <label for="grade">Nilai 1:</label>
+            <input type="number" class="grade" required>
+          </div>
+        </div>
+        <button type="button" id="addGrade" class="add-button">Tambah Nilai +</button>
+      </div>
+      <button type="submit">Tambah Data</button>
+    </form>
+    <hr>
+    <table id="studentTable">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Kelas</th>
+          <th>Nama Siswa</th>
+          <th>Mata Pelajaran</th>
+          <th>Nilai</th>
+          <th>Rata-Rata</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button id="downloadExcel" style="display: none;">Unduh Excel</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
