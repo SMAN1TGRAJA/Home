@@ -4,76 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berita SMAN 1 Tanjung Raja</title>
-    <link rel="stylesheet" href="web.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="317-SMAN_1_TANJUNG_RAJA.png" alt="Logo Sekolah">
-            <h1>SMA Negeri 1 Tanjung Raja</h1>
-        </div>
-<nav class="navbar">
-    <div class="menu-toggle" id="menu-toggle">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+  <header>
+    <div class="banner" id="banner">
+      <h3>SMAN 1 TG RAJA</h3>
     </div>
-  </nav>
-  <div class="menu" id="menu">
+  </header>
+        <div class="logo">
+            <img src="Screenshot_20241225_131855_FlipaClip.jpg" alt="Logo Sekolah">
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+<div class="menu-overlay" id="menu-overlay">
+  <nav class="menu-content">
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li class="has-submenu">
+      <li>
+        <div class="menu-item1">
+          <a href="web.html"><img src="Home.png"></a>
+        </div>
+      </li>
+      <li>
         <div class="menu-item">
-          <a href="#profil">Profil</a>
+          <a href="profil.html"><img src="Profil.png"></a>
           <span class="toggle-submenu">+</span>
         </div>
         <ul class="submenu">
           <li><a href="profil.html">Profil Sekolah</a></li>
           <li><a href="guru.html">Guru dan Staf Kami</a></li>
-            <li><a href="osis.html">OSIS</a></li>
+          <li><a href="osis.html">OSIS</a></li>
         </ul>
       </li>
-      <li class="has-submenu">
+      <li>
         <div class="menu-item">
-          <a href="#layanan">Layanan</a>
+          <a href="layanan.html"><img src="Layanan.png"></a>
           <span class="toggle-submenu">+</span>
         </div>
         <ul class="submenu">
           <li><a href="ekstrakurikuler.html">Ekstrakurikuler</a></li>
           <li><a href="ppdb.html">PPDB 2024</a></li>
-          <li><a href="e-learning.html">E-learning</a></li>
-          </li>
-      </ul>
-          <ul>
-      <li><a href="berita.html">Berita</a></li>
-      </ul>
-                <ul>
-      <li><a href="about.html">Tentang Kami</a></li>
-      </ul>
-        </nav>
-    </header>
-    
-    <!-- Hero Section -->
-    <section id="home" class="home">
-        <h2>SMA Negeri 1 Tanjung Raja</h2>
-    </section>
+          <li><a href="e-learning.html">E-Learning</a></li>
+        </ul>
+      </li>
+      <li><a href="berita.html"><img src="Berita.png"></a></li>
+      <li><a href="about.html"><img src="Tentang Kami.png"></a></li>
+       <li><a href="login.html" target="_blank" class="btn-login">Login</a></li>
+    </ul>
+  </nav>
+</div>
+
+<section id="logo" class="logo1">
+        <div class="logo1">
+<h2>Berita</h2>
+<p>Home 》Berita</p>
+        </div>
+  </section>
        <section id="berita" class="news-section">
     <h2>Berita Terkini</h2>
     <div class="news-slider" id="newsSlider">
         <!-- Kartu Berita -->
-        <div class="news-card">
-          <h2>Kunjungan Kepala Dinas Provinsi Sumatera Selatan dalam rangka acara Workshop Public Speaking SMAN 1 Tanjung Raja</h2><p>14 November 2024 | Ditulis oleh OSPK SMANTRA</p>
+        <div class="news-card1">
+          <h2 align="left">Kunjungan Kepala Dinas Provinsi Sumatera Selatan dalam rangka acara Workshop Public Speaking SMAN 1 Tanjung Raja</h2><p>14 November 2024 | Ditulis oleh OSPK SMANTRA</p>
+<div class="action-buttons">
+    <button onclick="printPage()" class="print-button">
+        <img src="658849.png" alt="Print Icon" style="width: 20px; height: 20px;"></button>
+    <button onclick="sharePage()" class="share-button">        <img src="share-sharing-icon-29.png" alt="Print Icon" style="width: 20px; height: 20px;"></button>
+</div>
             <img src="IMG-20241114-WA0060.jpg" alt="Berita 1">
             <div class="signature-section">
               <div class="signature-line"></div>
-            <p align="justify">SMAN 1 Tanjung Raja - Pada sabtu 02 November 2024, ROHIS SMAN 1 Tanjung Raja mengadakan acara silahturahmi dalam mempererat tali persaudaraan antar siswa SMAN 1 Tanjung Raja dengan siswa atau santri dari sekolah lain. Pada kesempatan Silahturahmi ini juga di hadiri oleh Ust. Abdullah Sowi, S.Psi., M.Ag sekaligus penceramah yang memberikan ilmu keagamaan terutama bagi siswa muda sekarang. Adapun kegiatan hari ini bertema "Narkoba No, Prestasi Yes" yang mengajak siswa untuk menjauhi larangan agama dan capailah prestasi setinggi-tingginya, karena jalani lah masa muda dengan hal yang bermanfaat dan dapat memberi kita keberkahan di dunia maupun di akhirat.
-<p align="justify">Jadi diharapkan dengan di adakannya acara ini dapat mendatangkan kebermanfaatan bagi siswa terutama bekal dalam menjalani hidup dan mendapatkan keberkahan disetiap tindakan.</p>
+            <p align="justify"><b>SMAN 1 Tanjung Raja -</b> Pada 12 November SMA Negeri 1 Tanjung Raja mengadakan acara <i>Workshop Public Speaking</i> yang membahas tentang tatanan dalam berbicara (<i>Public Speaking</i>), acara tersebut dihadiri langsung oleh Plt. Kepala Dinas Provinsi Sumatera Selatan Bapak Awalludin, S.Pd, M.Si serta dihadiri juga tamu lainnya seperti Anggota DPRD Ibu Hj. Zaitun Mawardi Yahya, S.H, M.Kn., Sekretariat Daerah Bapak H. Muhsin, ST., MM., MT., dan banyak tamu penting  lainnya. serta acara ini dihadiri oleh Kepala Sekolah dan guru-guru perwakilan SMA/SMK Se-Kabupaten Ogan Ilir.
+<p align="justify">Acara ini dibuka dengan Sambutan Kepala Sekolah SMAN 1 Tanjung Raja Ibu Dra. Sutinawati, M.Si., dan pidato dari tamu penting seperti Kepala Dinas dan Sekretariat Daerah. Namun ada hal yang menarik yaitu ketika Kepala Dinas selesai berpidato, Anggota Paduan Suara SMAN 1 Tanjung Raja memberikan pertunjukan dengan menyanyikan lagu ciptaan bapak Awalludin yang berjudul "Linjang Suangan". Dengan berlangsungnya acara ini diharapkan dapat memberikan manfaat terutama ilmu kepada guru-guru dalam bersikap yang dimulai dari hal kecil seperti berbicara didepan siswa-siswi ketika sedang mengajar.</p>
 <h4 align="justify">SMANTRA</p>
 <p align="justify">TOBO PACAK, PACAK TOBO, PACAK GALE!</p>
             </div>
             </div>
             </section>
+            
+      <div class="kontak">
+        <h3><u>Ko</u>ntak</h3>
+  <table id="data-table">
+    <thead>
+      <tr>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <th><img src="1735192863486.png"></th>
+      <th>Jln. Merdeka No.57, Kel. Tanjung Raja Utara, Kec. Tanjung Raja, Kab. Ogan Ilir, Sumatera Selatan</th>
+      </tr>
+      <tr>
+      <th><img src="Telp.png"></th>
+      <th>(0712) 351072</th>
+      </tr>
+      <tr>
+      <th><img src="envelope_letter_carte_card_icon_144621.png"></th>
+      <th>sman1tgraja@gmail.com</th>
+      </tr>
+        </tbody>
+        </table>
+      </div>
+            
     <!-- Footer -->
     <footer>
         <div class="social-media">
@@ -83,6 +119,29 @@
             <p>2024 &copy; V.1.1 SMA Negeri 1 Tanjung Raja. All right reserved.</p>
         </div>
     </footer>
-  <script src="script.js"></script>
+<script>
+  // Fungsi untuk mencetak halaman
+  function printPage() {
+      window.print();
+  }
+
+  // Fungsi untuk berbagi halaman (menggunakan Web Share API jika didukung)
+  function sharePage() {
+      if (navigator.share) {
+          navigator.share({
+              title: document.title,
+              text: 'Lihat berita terbaru di SMA Negeri 1 Tanjung Raja!',
+              url: window.location.href
+          }).then(() => {
+              console.log('Berhasil berbagi!');
+          }).catch((error) => {
+              console.error('Gagal berbagi:', error);
+          });
+      } else {
+          alert('Fitur berbagi tidak didukung di browser Anda.');
+      }
+  }
+</script>
+    <script src="script.js"></script>
   </body>
-  </html>
+</html>
