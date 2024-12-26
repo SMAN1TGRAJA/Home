@@ -137,4 +137,7 @@ p {
     display: none;
 }
 
-
+.login-box img {
+  width: 100px;
+  height: 70px;
+}
