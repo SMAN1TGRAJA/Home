@@ -1,0 +1,691 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: url('Desain tanpa judul.png') center;
+    scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+    background: url('images (6).jpeg') no-repeat center center/cover;
+    color: #fff;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 6vw 8vw;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-size: 4vw;
+    border-radius: 0 0 0 40rem;
+}
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay hitam semi-transparan */
+    z-index: 1; /* Overlay di atas gambar */
+    border-radius: 0 0 0 20rem;
+}
+
+/* Pastikan Teks Tetap Di Atas Overlay */
+header h3,
+header p {
+    position: relative;
+    z-index: 2; /* Teks di atas overlay */
+}
+
+.logo img {
+    width: 50vw;
+    height: 17vw;
+    margin-right: 10px;
+    margin-left: 5vw;
+}
+/* Logo dan tombol hamburger */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: #D2691E;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px;
+}
+
+/* Overlay menu */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.menu-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  background: #F5F5DC;
+  padding: 20px;
+  overflow-y: auto;
+  border-radius: 0 10vw 0 0;
+}
+
+.menu-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-content ul li {
+  margin: 10px 0;
+}
+
+.menu-content ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 3vw;
+}
+
+/* Submenu */
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  list-style: none;
+  padding-left: 20px;
+  transition: max-height 0.3s ease;
+  background: #FFE4C4;
+  border-radius: 5px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+}
+
+.menu-item1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin: 15vw 0 0 0;
+}
+
+.menu-item1 img {
+  width: 26vw;
+}
+
+.menu-item img {
+  width: 26vw;
+}
+
+.toggle-submenu {
+  cursor: pointer;
+  color: #333;
+  font-size: 6vw;
+  font-weight: bold;
+}
+
+li img {
+  width: 28vw;
+  height: 8vw;
+}
+
+/* Aktifkan dropdown */
+.menu-content ul li.open .submenu {
+  max-height: 50vw; /* Tinggi maksimal submenu */
+}
+
+.menu-content ul li.open .toggle-submenu {
+  transform: rotate(45deg); /* Rotasi tanda plus menjadi silang */
+}
+
+/* Aktifkan menu */
+.menu-overlay.active {
+  left: 0;
+}
+
+/* Slider */
+.slider {
+  position: relative;
+  max-width: 100%;
+  height: 30vw;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 40px 0 40px 0;
+  display: flex;
+}
+
+.caption {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay hitam semi-transparan */
+    z-index: 1; /* Overlay di atas gambar */
+    border-radius: 10px;
+}
+
+.caption h2 {
+  margin: 10px 0 0;
+  font-size: 4vw;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  font-family: 'great vibes';
+}
+
+.caption p {
+  margin: 0;
+  font-size: 2vw;
+  text-align: center;
+  color: #fff;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+button.prev, 
+button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+button.prev {
+  left: 10px;
+}
+
+button.next {
+  right: 10px;
+}
+
+button.prev:hover, 
+button.next:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.home {
+    position: relative;
+    color: black;
+    background: #FFE4C4;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 12px;
+}
+
+.hero {
+    position: relative;
+    color: black;
+    text-align: center;
+    padding: 20px 20px;
+    font-size: 11px;
+}
+
+.hero .card {
+    background-color: #FFE4C4;
+    padding: 20px;
+    border-radius: 50px;
+    max-width: 10000px;
+    margin: auto;
+    color: black;
+    animation: fadeInUp 1.5s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.hero img {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 0 70px 70px 70px;
+}
+
+/* Animasi */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h2 {
+    line-height: 1.6;
+    text-align: none;
+    margin: 0 0 15px 0;
+}
+
+.signature-section {
+    text-align: left;
+    margin-top: 30px;
+}
+
+/* Tombol Pelajari Lebih Lanjut */
+.caption .btn-learn-more {
+  display: inline-block;
+  margin-top: 10px;
+  margin: 10px 50px;
+  padding: 10px 20px;
+  font-size: 2vw;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #007bff 50%, yellow 50%);
+  background-size: 200% 100%;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-position 0.4s ease;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.caption .btn-learn-more:hover {
+  background-position: left bottom; /* Efek transisi kanan ke kiri saat hover */
+}
+
+.caption .btn-learn-more::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  background: yellow; /* Warna hijau */
+  z-index: -1;
+  transition: left 0.4s ease; /* Efek transisi menyebar */
+}
+
+.caption .btn-learn-more:active::after {
+  left: 0; /* Gerakan gradien ke kiri saat tombol ditekan */
+}
+
+.news-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.news-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.news-card {
+    min-width: 100%; /* Hanya tampil satu kartu per slide */
+    background: #FFE4C4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.news-card img {
+    width: 12vw;
+    height: 11vw;
+    object-fit: cover;
+    border-radius: 10px;
+    position: absolute;
+    margin-left: 70vw;
+}
+
+.news-card h3 {
+    font-size: 14px;
+    margin-right: 20vw;
+    color: black;
+}
+
+.news-card p {
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 3px;
+}
+
+.news-card .read-more {
+    font-size: 12px;
+    color: grey;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-card .read-more:hover {
+    text-decoration: underline;
+}
+
+/* Tombol Lihat Semua */
+.news-footer {
+    margin-top: 20px;
+}
+
+.news-footer .see-all {
+    background: grey;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.news-footer .see-all:hover {
+    background: #003366;
+}
+
+footer {
+    background: #D2691E;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 0;
+    position: relative;
+    font-size: 8px;
+    animation: fadeInUp 1.5s;
+}
+
+footer .social-media {
+    margin-top: 10px;
+}
+
+footer .social-media a img {
+    width: 15px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+    height: 15px;
+}
+
+footer .social-media a img:hover {
+    transform: scale(1.2);
+}
+
+.menu-content .btn-login {
+  display: inline-block;
+  margin-top: 140px;
+  margin: 140px 70px;
+  padding: 10px 20px;
+  font-size: 2vw;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #D2691E 50%, yellow 50%);
+  background-size: 200% 100%;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-position 0.4s ease;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.menu-content .btn-login:hover {
+  background-position: left bottom; /* Efek transisi kanan ke kiri saat hover */
+}
+
+.menu-content .btn-login::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  background: yellow; /* Warna hijau */
+  z-index: -1;
+  transition: left 0.4s ease; /* Efek transisi menyebar */
+}
+
+.menu-content .btn-login:active::after {
+  left: 0; /* Gerakan gradien ke kiri saat tombol ditekan */
+}
+
+.logo1 {
+  display: absolute;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px;
+  background-color: #D2691E;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: fadeInUp 1.5s;
+  color: white;
+}
+
+.logo1 p {
+  font-size: 12px;
+}
+
+.kontak {
+  text-align: left;
+  background: #FF7F50;
+  font-size: 10px;
+  display: absolute;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  position: sticky;
+  top: 0;
+  animation: fadeInUp 1.5s;
+  color: white;
+}
+
+.kontak img {
+  width: 30px;
+  height: 35px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      text-align: left;
+    }
+    table th, table td {
+      border: 1px solid #FFE4C4;
+      padding: 8px;
+      text-align: left;
+    }
+    table th {
+      background-color: #FFE4C4;
+    }
+    table thead tr th {
+      background-color: #D2691E;
+    }
+    
+    .kontak table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0;
+      text-align: left;
+    }
+    .kontak table th, table td {
+      border: 1px solid #FF7F50;
+      padding: 8px;
+      text-align: left;
+    }
+    .kontak table th {
+      background-color: #FF7F50;
+    }
+  
+  .kontak u {
+    color: yellow
+  }
+  
+  .kontak h3 {
+    font-size: 14px
+  }
+  
+  .feature-section {
+    padding: 15px;
+}
+
+.feature-section h4 {
+    font-size: 18px;
+    color: #333;
+}
+
+.feature-section p {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    font-size: 12px;
+    color: #333;
+}
+.feature-section img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.action-button {
+    background-color: white;
+    color: #black;
+    border: none;
+    padding: 10px 5px;
+    margin: 5px;
+    border-radius: 20px 0;
+    font-size: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'agu display';
+}
+
+.news-card1 {
+    background-color: #FFE4C4;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 10000px;
+    margin: auto;
+    color: black;
+    animation: fadeInUp 1.5s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.news-card1 img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.news-card1 h3 {
+    font-size: 11px;
+    color: #004d99;
+}
+
+.news-card1 p {
+    font-size: 11px;
+    color: #555;
+}
+
+.news-card1 h4 {
+    font-size: 11px;
+    margin: 15px 0 10px;
+    color: #black;
+}
+
+.action-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.print-button, .share-button {
+    display: flex;
+    align-items: right;
+    justify-content: center;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #D2691E;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+}
+
+.print-button img {
+    margin-right: 8px;
+}
+
+.print-button:hover, .share-button:hover {
+    background-color: #0056b3;
+}
