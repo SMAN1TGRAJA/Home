@@ -706,3 +706,18 @@ footer .social-media a img:hover {
 .print-button:hover, .share-button:hover {
     background-color: #0056b3;
 }
+
+        @media print {
+            body * {
+                visibility: hidden; /* Sembunyikan semua elemen */
+            }
+            .news-card1, .news-card1 * {
+                visibility: visible; /* Tampilkan hanya bagian tertentu */
+            }
+            .news-card1 {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+        }
