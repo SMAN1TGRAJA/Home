@@ -4,56 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OSIS SMAN 1 Tanjung Raja</title>
-    <link rel="stylesheet" href="web.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="317-SMAN_1_TANJUNG_RAJA.png" alt="Logo Sekolah">
-            <h1>SMA Negeri 1 Tanjung Raja</h1>
-        </div>
-<nav class="navbar">
-    <div class="menu-toggle" id="menu-toggle">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+  <header>
+    <div class="banner" id="banner">
+      <h3>SMAN 1 TG RAJA</h3>
     </div>
-  </nav>
-  <div class="menu" id="menu">
+  </header>
+        <div class="logo">
+            <img src="Screenshot_20241225_131855_FlipaClip.jpg" alt="Logo Sekolah">
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+<div class="menu-overlay" id="menu-overlay">
+  <nav class="menu-content">
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li class="has-submenu">
+      <li>
+        <div class="menu-item1">
+          <a href="web.html"><img src="Home.png"></a>
+        </div>
+      </li>
+      <li>
         <div class="menu-item">
-          <a href="#profil">Profil</a>
+          <a href="profil.html"><img src="Profil.png"></a>
           <span class="toggle-submenu">+</span>
         </div>
         <ul class="submenu">
           <li><a href="profil.html">Profil Sekolah</a></li>
           <li><a href="guru.html">Guru dan Staf Kami</a></li>
-            <li><a href="osis.html">OSIS</a></li>
+          <li><a href="osis.html">OSIS</a></li>
         </ul>
       </li>
-      <li class="has-submenu">
+      <li>
         <div class="menu-item">
-          <a href="#layanan">Layanan</a>
+          <a href="layanan.html"><img src="Layanan.png"></a>
           <span class="toggle-submenu">+</span>
         </div>
         <ul class="submenu">
           <li><a href="ekstrakurikuler.html">Ekstrakurikuler</a></li>
           <li><a href="ppdb.html">PPDB 2024</a></li>
-          <li><a href="e-learning.html">E-learning</a></li>
-          </li>
-      </ul>
-          <ul>
-      <li><a href="berita.html">Berita</a></li>
-      </ul>
-                <ul>
-      <li><a href="about.html">Tentang Kami</a></li>
-      </ul>
-        </nav>
-    </header>
-    
+          <li><a href="e-learning.html">E-Learning</a></li>
+        </ul>
+      </li>
+      <li><a href="berita.html"><img src="Berita.png"></a></li>
+      <li><a href="about.html"><img src="Tentang Kami.png"></a></li>
+       <li><a href="login.html" target="_blank" class="btn-login">Login</a></li>
+    </ul>
+  </nav>
+</div>
+
+<section id="logo" class="logo1">
+        <div class="logo1">
+<h2>OSIS</h2>
+<p>Home 》OSIS</p>
+        </div>
+  </section>
     <!-- Hero Section -->
     <section id="home" class="home">
         <h2>OSIS DAN MPK SMA Negeri 1 Tanjung Raja</h2>
@@ -80,6 +90,30 @@
 <p align="left">3. Menjadikan OSIS sebagai teladan dengan menjaga kedisiplinan dan tanggung jawab.
 </p>
         </section>
+      <div class="kontak">
+        <h3><u>Ko</u>ntak</h3>
+  <table id="data-table">
+    <thead>
+      <tr>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <th><img src="1735192863486.png"></th>
+      <th>Jln. Merdeka No.57, Kel. Tanjung Raja Utara, Kec. Tanjung Raja, Kab. Ogan Ilir, Sumatera Selatan</th>
+      </tr>
+      <tr>
+      <th><img src="Telp.png"></th>
+      <th>(0712) 351072</th>
+      </tr>
+      <tr>
+      <th><img src="envelope_letter_carte_card_icon_144621.png"></th>
+      <th>sman1tgraja@gmail.com</th>
+      </tr>
+        </tbody>
+        </table>
+      </div>
+
         <!-- Footer -->
     <footer>
         <div class="social-media">
@@ -91,4 +125,4 @@
     </footer>
   <script src="script.js"></script>
   </body>
-  </html>
+        </html>
