@@ -23,6 +23,9 @@
                 </div>
                 <button type="submit" class="btn">Login</button>
                 <p class="error-message" id="error-message"></p>
+      <div class="caption">
+        <a href="buatakun.html" target="_blank" class="btn-learn-more">Buat Akun</a>
+        </div>
             </form>
         </div>
     </div>
@@ -33,41 +36,62 @@
 </div>
 
     <script>
-      // Multi-User Data
-const users = [
-    { username: "Novarida", password: "passmantra" },
-    { username: "S.Gunawan", password: "smanpsw" },
-    { username: "Shinta", password: "Smantratgraja" }
-];
+const API_KEY = "AIzaSyCKxeqSyouJ0gx3MYmLkkncBde60Zc72Vw"; // Masukkan API Key Anda
+const SHEET_ID = "1P_VVBOaVdMNkrGHuT0D2uWL0Q5JAoMtziqZZ8ZpECrQ";
+const SHEET_NAME = "Login";
 
-// Handle Login Form Submission
-document.getElementById("login-form").addEventListener("submit", function (event) {
-    event.preventDefault();
+const form = document.getElementById("login-form");
+const errorMessage = document.getElementById("error-message");
+const notification = document.getElementById("notification");
+const notificationMessage = document.getElementById("notification-message");
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-    const errorMessage = document.getElementById("error-message");
-    const notification = document.getElementById("notification");
-    const notificationMessage = document.getElementById("notification-message");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    // Check if user exists
-    const user = users.find(user => user.username === username && user.password === password);
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  
+  errorMessage.textContent = ""; // Reset pesan error
+
+  try {
+    const users = await fetchUsersFromSheet();
+    const user = users.find(u => u.username === username && u.password === password);
 
     if (user) {
-        // Show notification
-        notificationMessage.textContent = `Welcome, ${user.username}!`;
-        notification.classList.remove("hidden");
+      // Tampilkan notifikasi
+      notificationMessage.textContent = `Welcome, ${user.username}!`;
+      notification.classList.remove("hidden");
 
-        // Simulate loading and redirect after 2 seconds
-        setTimeout(() => {
-            notification.classList.add("hidden");
-            window.location.href = "admin.html"; // Replace with your dashboard page
-        }, 2000);
+      // Simulasi loading dan redirect setelah 2 detik
+      setTimeout(() => {
+        notification.classList.add("hidden");
+        window.location.href = "dashboard.html"; // Ganti dengan halaman dashboard Anda
+      }, 2000);
     } else {
-        // Error: Show error message
-        errorMessage.textContent = "Invalid username or password!";
+      errorMessage.textContent = "Invalid username or password.";
     }
+  } catch (error) {
+    errorMessage.textContent = "Failed to connect to the server.";
+    console.error(error);
+  }
 });
+
+async function fetchUsersFromSheet() {
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
+  const response = await fetch(url);
+  
+  if (!response.ok) {
+    throw new Error("Failed to fetch data from Google Sheets");
+  }
+  
+  const data = await response.json();
+  const rows = data.values.slice(1); // Abaikan header
+  
+  return rows.map(row => ({
+    username: row[0], // Kolom username
+    password: row[1], // Kolom password
+  }));
+}
 </script>
 </body>
 </html>
