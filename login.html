@@ -9,7 +9,7 @@
 <body>
     <div class="login-container">
         <div class="login-box">
-          <img src="Desain tanpa judul (3).gif">
+            <img src="Desain tanpa judul (3).gif">
             <h2>Welcome</h2>
             <p>Silahkan Login</p>
             <form id="login-form">
@@ -17,81 +17,130 @@
                     <label for="username">Username</label>
                     <input type="text" id="username" placeholder="Enter your username" required>
                 </div>
+                <!-- Form data yang tidak bisa diubah -->
+                <div class="input-group" id="role-section" class="hidden">
+                    <label for="role">Sebagai</label>
+                    <input type="text" id="role" readonly disabled>
+                </div>
                 <div class="input-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" placeholder="Enter your password" required>
                 </div>
                 <button type="submit" class="btn">Login</button>
                 <p class="error-message" id="error-message"></p>
-      <div class="caption">
-        <a href="buatakun.html" target="_blank" class="btn-learn-more">Buat Akun</a>
-        </div>
+                <div class="caption">
+                    <a href="buatakun.html" target="_blank" class="btn-learn-more">Buat Akun</a>
+                </div>
             </form>
         </div>
     </div>
-<!-- Notifikasi Sukses -->
-<div id="notification" class="notification hidden">
-    <div class="loading-circle"></div>
-    <p id="notification-message"></p>
-</div>
+
+    <!-- Notifikasi Sukses -->
+    <div id="notification" class="notification hidden">
+        <div class="loading-circle"></div>
+        <p id="notification-message"></p>
+    </div>
 
     <script>
-const API_KEY = "AIzaSyCKxeqSyouJ0gx3MYmLkkncBde60Zc72Vw"; // Masukkan API Key Anda
-const SHEET_ID = "1P_VVBOaVdMNkrGHuT0D2uWL0Q5JAoMtziqZZ8ZpECrQ";
-const SHEET_NAME = "Login";
+        const API_KEY = "AIzaSyCKxeqSyouJ0gx3MYmLkkncBde60Zc72Vw"; // Masukkan API Key Anda
+        const SHEET_ID = "1P_VVBOaVdMNkrGHuT0D2uWL0Q5JAoMtziqZZ8ZpECrQ";
+        const SHEET_NAME = "Login"; // Nama sheet tempat data login berada
 
-const form = document.getElementById("login-form");
-const errorMessage = document.getElementById("error-message");
-const notification = document.getElementById("notification");
-const notificationMessage = document.getElementById("notification-message");
+        const form = document.getElementById("login-form");
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
+        const errorMessage = document.getElementById("error-message");
+        const notification = document.getElementById("notification");
+        const notificationMessage = document.getElementById("notification-message");
+        const roleSection = document.getElementById("role-section");
+        const roleInput = document.getElementById("role");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+        // Menangani input username
+        usernameInput.addEventListener("input", async () => {
+            const username = usernameInput.value.trim();
+            if (username) {
+                try {
+                    const users = await fetchUsersFromSheet();
+                    const user = users.find(u => u.username === username);
+                    
+                    if (user) {
+                        // Menampilkan role dan menonaktifkan form role
+                        roleInput.value = user.role;
+                        roleSection.classList.remove("hidden");
+                    } else {
+                        // Jika username tidak ditemukan, sembunyikan form role
+                        roleSection.classList.add("hidden");
+                    }
+                } catch (error) {
+                    console.error(error);
+                    roleSection.classList.add("hidden");
+                }
+            } else {
+                roleSection.classList.add("hidden");
+            }
+        });
 
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
-  
-  errorMessage.textContent = ""; // Reset pesan error
+        // Menangani submit form login
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-  try {
-    const users = await fetchUsersFromSheet();
-    const user = users.find(u => u.username === username && u.password === password);
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            errorMessage.textContent = ""; // Reset pesan error
 
-    if (user) {
-      // Tampilkan notifikasi
-      notificationMessage.textContent = `Welcome, ${user.username}!`;
-      notification.classList.remove("hidden");
+            try {
+                const users = await fetchUsersFromSheet();
+                const user = users.find(u => u.username === username && u.password === password);
 
-      // Simulasi loading dan redirect setelah 2 detik
-      setTimeout(() => {
-        notification.classList.add("hidden");
-        window.location.href = "dashboard.html"; // Ganti dengan halaman dashboard Anda
-      }, 2000);
-    } else {
-      errorMessage.textContent = "Invalid username or password.";
-    }
-  } catch (error) {
-    errorMessage.textContent = "Failed to connect to the server.";
-    console.error(error);
-  }
-});
+                if (user) {
+                    // Tampilkan notifikasi
+                    notificationMessage.textContent = `Welcome, ${user.username}!`;
+                    notification.classList.remove("hidden");
 
-async function fetchUsersFromSheet() {
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
-  const response = await fetch(url);
-  
-  if (!response.ok) {
-    throw new Error("Failed to fetch data from Google Sheets");
-  }
-  
-  const data = await response.json();
-  const rows = data.values.slice(1); // Abaikan header
-  
-  return rows.map(row => ({
-    username: row[0], // Kolom username
-    password: row[1], // Kolom password
-  }));
-}
-</script>
+                    // Simulasi loading dan redirect setelah 2 detik
+                    setTimeout(() => {
+                        notification.classList.add("hidden");
+
+                        // Redirect berdasarkan role
+                        if (user.role === "Guru") {
+                            window.location.href = "dashboard.html"; // Ganti dengan halaman dashboard guru
+                        } else if (user.role === "Siswa") {
+                            window.location.href = "dashboard-siswa.html"; // Ganti dengan halaman dashboard siswa
+                        } else {
+                            window.location.href = "dashboard.html"; // Ganti dengan halaman default
+                        }
+                    }, 2000);
+                } else {
+                    errorMessage.textContent = "Invalid username or password.";
+                }
+            } catch (error) {
+                errorMessage.textContent = "Failed to connect to the server.";
+                console.error(error);
+            }
+        });
+
+        // Mengambil data pengguna dari Google Sheets
+        async function fetchUsersFromSheet() {
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error("Failed to fetch data from Google Sheets");
+            }
+            
+            const data = await response.json();
+            const rows = data.values;
+
+            // Mengabaikan header, asumsikan header adalah baris pertama
+            const usersData = rows.slice(1); // Mulai dari baris kedua untuk mengabaikan header
+
+            return usersData.map(row => ({
+                username: row[0], // Kolom username
+                password: row[1], // Kolom password
+                role: row[2] // Kolom role (misalnya: 'guru' atau 'siswa')
+            }));
+        }
+    </script>
 </body>
 </html>
