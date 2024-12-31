@@ -257,6 +257,12 @@ li img {
   object-fit: cover;
 }
 
+.slide iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 button.prev, 
 button.next {
   position: absolute;
@@ -297,19 +303,17 @@ button.next:hover {
     position: relative;
     color: black;
     text-align: center;
-    padding: 20px 20px;
+    padding: 20px 10px;
     font-size: 11px;
 }
 
 .hero .card {
     background-color: #FFE4C4;
     padding: 20px;
-    border-radius: 50px;
+    border-radius: 5px;
     max-width: 10000px;
-    margin: auto;
     color: black;
     animation: fadeInUp 1.5s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .hero img {
   max-width: 100%;
@@ -707,17 +711,71 @@ footer .social-media a img:hover {
     background-color: #0056b3;
 }
 
-        @media print {
-            body * {
-                visibility: hidden; /* Sembunyikan semua elemen */
+.marquee-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f0f0f0;
+            padding: 10px;
+            overflow: hidden;
+            margin: 10px 10px 10px 10px;
+        }
+
+        .marquee-text {
+            white-space: nowrap;
+            animation: scroll 10s linear infinite;
+        }
+
+        .marquee-container .material-symbols-outlined {
+            font-size: 40px;
+            color: #white;
+            position: absolute;
+            left: 10px;
+            background-color: #D2691E;
+            border-radius: 10px;
+            padding: 0 5px 0 5px;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(100%);
             }
-            .news-card1, .news-card1 * {
-                visibility: visible; /* Tampilkan hanya bagian tertentu */
+            to {
+                transform: translateX(-100%);
             }
-            .news-card1 {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-            }
+        }
+        
+.garis-teks {
+            border-bottom: 4px solid transparent; /* Buat border kosong */
+            background-image: linear-gradient(to right, #D2691E, #33b5ff); /* Garis dua warna */
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: 100% 4px; /* Menyesuaikan ukuran garis */
+            padding-bottom: 5px; /* Jarak antara teks dan garis */
+        }
+        
+.submenu li {
+  position: relative;
+}
+
+.submenu li a {
+  color: white;
+  padding: 10px 20px;
+  display: block;
+  text-decoration: none;
+}
+
+/* Menambahkan garis vertikal di sebelah kanan teks submenu */
+.submenu li a {
+  border-left: 3px solid #ff0000; /* Garis vertikal di sebelah kanan setiap item submenu */
+}
+
+/* Menjaga garis tetap terhubung antar submenu */
+.submenu > li:last-child a {
+  border-bottom: none;
+}
+
+/* Efek hover untuk submenu */
+.submenu li a:hover {
+  background-color: #555;
         }
